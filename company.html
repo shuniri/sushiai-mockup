@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | Sushi AI株式会社</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --ink: #1C1C1E;
+    --ink-soft: #2C2C2E;
+    --warm: #F7F5F0;
+    --cream: #EFECE4;
+    --accent: #C85A38;
+    --accent-hover: #A8482D;
+    --text: #3A3A3C;
+    --text-mid: #636366;
+    --text-light: #8E8E93;
+    --border: #D1D1D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    padding: 0 48px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-logo em { font-style: normal; color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); font-weight: 700; }
+  .nav-contact {
+    background: var(--ink) !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-contact:hover { background: var(--accent) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 140px 48px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy-band {
+    background: var(--ink);
+    color: #fff;
+    padding: 80px 48px;
+    margin-top: 40px;
+  }
+  .philosophy-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
+  }
+  .phil-item::before {
+    content: '';
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--accent);
+    margin-bottom: 16px;
+  }
+  .phil-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+  .phil-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px; font-weight: 700;
+    line-height: 1.9;
+  }
+  .phil-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+    line-height: 1.8;
+  }
+
+  /* INFO TABLE */
+  .info-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .info-section h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .info-table tr {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .info-table th {
+    text-align: left;
+    padding: 20px 24px 20px 0;
+    font-size: 13px; font-weight: 700;
+    color: var(--ink);
+    width: 180px;
+    vertical-align: top;
+  }
+  .info-table td {
+    padding: 20px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* TEAM */
+  .team-section {
+    background: var(--warm);
+    padding: 80px 48px;
+  }
+  .team-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .team-inner h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .team-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .team-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 36px;
+    display: flex; gap: 24px;
+  }
+  .team-avatar {
+    width: 64px; height: 64px;
+    background: var(--ink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: #fff; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .team-role {
+    font-size: 11px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .team-name {
+    font-size: 20px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .team-bio {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* INVESTORS */
+  .investors-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .investors-section h2 {
+    font-size: 20px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .inv-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .inv-chip {
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .adv-label {
+    font-size: 14px; font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 16px;
+  }
+  .adv-chip {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-mid);
+  }
+  .adv-chip strong { color: var(--text); font-weight: 600; }
+
+  /* MAP */
+  .map-section {
+    background: var(--cream);
+    padding: 60px 48px;
+  }
+  .map-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    align-items: center;
+  }
+  .map-inner .map-placeholder {
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--text-light);
+  }
+  .map-info h3 {
+    font-size: 18px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .map-info p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2;
+  }
+
+  /* CTA */
+  .cta-band {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 48px;
+  }
+  .cta-box {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+  }
+  .cta-box h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px; font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .cta-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 40px;
+    font-size: 14px; font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--accent-hover); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--warm);
+    padding: 48px 48px 32px;
+  }
+  .footer-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .footer-brand em { font-style: normal; color: var(--accent); }
+  .footer-info {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+  .footer-links {
+    display: flex; gap: 24px; flex-shrink: 0; flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--ink); }
+  .footer-bottom {
+    max-width: 900px; margin: 0 auto;
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  /* FADE */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="sushiai_redesign_mockup.html" class="nav-logo">Sushi<em>AI</em></a>
+  <div class="nav-links">
+    <a href="sushiai_redesign_mockup.html#philosophy">企業理念</a>
+    <a href="sushiai_redesign_mockup.html#service">事業内容</a>
+    <a href="cases.html">導入事例</a>
+    <a href="sushiai_redesign_mockup.html#process">導入の流れ</a>
+    <a href="company.html" class="active">会社概要</a>
+    <a href="careers.html">採用情報</a>
+    <a href="sushiai_redesign_mockup.html#contact" class="nav-contact">相談する</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-label">Company</div>
+  <h1>AIの力で、<br>日本の産業を変えていく。</h1>
+</section>
+
+<section class="philosophy-band fade-in">
+  <div class="philosophy-inner">
+    <div class="phil-item">
+      <div class="phil-tag">Purpose</div>
+      <div class="phil-text">我が国のAI産業の発展に貢献し、デジタル赤字を防ぐ</div>
+    </div>
+    <div class="phil-item">
+      <div class="phil-tag">Mission</div>
+      <div class="phil-text">自国の未来に希望を創る</div>
+    </div>
+    <div class="phil-item">
+      <div class="phil-tag">Vision</div>
+      <div class="phil-text">日本から世界に誇れるAIサービスを輩出し続ける</div>
+      <div class="phil-sub">優秀AI人材特化のインキュベーション<br>エコシステムを構築する</div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section fade-in">
+  <h2>会社情報</h2>
+  <table class="info-table">
+    <tr><th>会社名</th><td>Sushi AI株式会社</td></tr>
+    <tr><th>設立</th><td>2024年11月5日</td></tr>
+    <tr><th>資本金</th><td>4億7,000万円（資本準備金を含む）</td></tr>
+    <tr><th>代表取締役会長</th><td>井上 裕基</td></tr>
+    <tr><th>代表取締役社長</th><td>水野 太賀</td></tr>
+    <tr><th>事業内容</th><td>AIコンサルティング・受託開発<br>自社AIプロダクト（SaaS）開発・提供<br>AI特化型インキュベーション</td></tr>
+    <tr><th>所在地</th><td>〒105-0001<br>東京都港区虎ノ門4-31-3 第3和田ビル 603号室</td></tr>
+  </table>
+</section>
+
+<section class="team-section fade-in">
+  <div class="team-inner">
+    <h2>経営チーム</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">井上</div>
+        <div>
+          <div class="team-role">Chairman</div>
+          <div class="team-name">井上 裕基</div>
+          <p class="team-bio">日本オラクル・アクセンチュア・サイバーエージェントでEC事業を3度立ち上げた連続起業家。2007年にWaqooを創業し上場まで導いた事業構築力で、AI導入を"経営成果"に変える。</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">水野</div>
+        <div>
+          <div class="team-role">CEO</div>
+          <div class="team-name">水野 太賀</div>
+          <p class="team-bio">AI・LLM・インフラ領域に精通し、全て自社開発の医療AIプロダクトで急成長したスタートアップを創業。技術選定からプロダクト設計まで一気通貫で推進する。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="investors-section fade-in">
+  <h2>出資者・アドバイザー</h2>
+  <div class="inv-row">
+    <div class="inv-chip">デジタルホールディングス</div>
+    <div class="inv-chip">ファインドスターグループ</div>
+    <div class="inv-chip">ベクトル</div>
+    <div class="inv-chip">ディ・ポップスグループ</div>
+    <div class="inv-chip">ジェイフロンティア</div>
+    <div class="inv-chip">エアトリ</div>
+    <div class="inv-chip">ON＆BOARD</div>
+  </div>
+  <div class="adv-label">個人アドバイザー</div>
+  <div class="inv-row">
+    <div class="adv-chip"><strong>田中 邦裕</strong> さくらインターネット代表</div>
+    <div class="adv-chip"><strong>福留 大士</strong> チェンジ代表</div>
+    <div class="adv-chip"><strong>小林 祐樹</strong> DM Mix創業者</div>
+    <div class="adv-chip"><strong>千本 倖生</strong> KDDI創業者</div>
+    <div class="adv-chip"><strong>杉元 崇将</strong> PDP創業者</div>
+  </div>
+</section>
+
+<section class="map-section fade-in">
+  <div class="map-inner">
+    <div class="map-placeholder">Google Map（本番実装時に埋め込み）</div>
+    <div class="map-info">
+      <h3>アクセス</h3>
+      <p>
+        〒105-0001<br>
+        東京都港区虎ノ門4-31-3<br>
+        第3和田ビル 603号室<br><br>
+        東京メトロ日比谷線「神谷町駅」徒歩3分
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band fade-in">
+  <div class="cta-box">
+    <h2>AIの導入、まずは相談から。</h2>
+    <p>御社の課題をお聞かせください。最適な進め方をご提案します。</p>
+    <a href="mailto:h.kubota@sushiai.jp" class="cta-btn">無料相談を申し込む</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Sushi<em>AI</em></div>
+      <div class="footer-info">
+        Sushi AI株式会社<br>
+        〒105-0001 東京都港区虎ノ門4-31-3 第3和田ビル 603号室<br>
+        設立 2024年11月 ｜ 資本金 4億7,000万円
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="company.html">会社概要</a>
+      <a href="sushiai_redesign_mockup.html#service">サービス</a>
+      <a href="cases.html">導入事例</a>
+      <a href="careers.html">採用情報</a>
+      <a href="sushiai_redesign_mockup.html#contact">お問い合わせ</a>
+      <a href="#">プライバシーポリシー</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 Sushi AI Co., Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var fadeEls = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>
+
+</body>
+</html>

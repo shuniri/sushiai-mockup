@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>導入事例 | Sushi AI株式会社</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --ink: #1C1C1E;
+    --ink-soft: #2C2C2E;
+    --warm: #F7F5F0;
+    --cream: #EFECE4;
+    --accent: #C85A38;
+    --accent-hover: #A8482D;
+    --accent-bg: #FDF5F2;
+    --text: #3A3A3C;
+    --text-mid: #636366;
+    --text-light: #8E8E93;
+    --border: #D1D1D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+  }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    padding: 0 48px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-logo em { font-style: normal; color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none;
+    font-size: 13px; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); font-weight: 700; }
+  .nav-contact {
+    background: var(--ink) !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-contact:hover { background: var(--accent) !important; }
+
+  .page-hero {
+    padding: 140px 48px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .page-hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .page-hero p {
+    font-size: 15px; color: var(--text-mid); line-height: 2;
+  }
+
+  /* SUMMARY STATS */
+  .stats-band {
+    background: var(--ink);
+    padding: 60px 48px;
+    margin-top: 40px;
+  }
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+    text-align: center;
+  }
+  .stat-item .stat-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px; font-weight: 800;
+    color: #fff;
+  }
+  .stat-item .stat-unit {
+    font-size: 14px; font-weight: 500;
+    color: var(--accent);
+  }
+  .stat-item .stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  /* CATEGORY */
+  .category-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .category-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .category-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 48px;
+  }
+
+  /* CASE CARD */
+  .case-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    align-items: start;
+  }
+  .case-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .case-content h3 {
+    font-size: 12px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .case-content h4 {
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .case-content p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+  .case-content .case-challenge {
+    margin: 20px 0;
+    padding: 16px 20px;
+    background: var(--cream);
+    border-radius: 8px;
+  }
+  .case-challenge-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--text-mid);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .case-challenge p {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .case-result {
+    background: var(--warm);
+    border-radius: 12px;
+    padding: 36px 32px;
+  }
+  .case-result-dark {
+    background: var(--ink);
+    color: #fff;
+  }
+  .case-result .result-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background: var(--accent); color: #fff;
+  }
+  .case-result .result-metric {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px; font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .case-result-dark .result-metric { color: #fff; }
+  .case-result .result-unit {
+    font-size: 16px; font-weight: 500;
+  }
+  .case-result .result-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 12px;
+    line-height: 1.8;
+  }
+  .case-result-dark .result-desc { color: rgba(255,255,255,0.5); }
+
+  .ba-row {
+    display: flex; gap: 12px;
+    margin-top: 20px;
+  }
+  .ba-item {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .ba-item.before {
+    background: var(--cream);
+    color: var(--text-mid);
+  }
+  .ba-item.after {
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .ba-item .ba-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .ba-item.after .ba-label { opacity: 1; }
+  .ba-item .ba-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px; font-weight: 800;
+    display: block; margin-bottom: 2px;
+  }
+
+  /* CTA */
+  .cta-band {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 48px;
+  }
+  .cta-box {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+  }
+  .cta-box h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px; font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .cta-box p {
+    font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 14px 40px;
+    font-size: 14px; font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--accent-hover); }
+
+  .footer {
+    background: var(--warm);
+    padding: 48px 48px 32px;
+  }
+  .footer-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;
+    gap: 32px; padding-bottom: 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.06); margin-bottom: 24px;
+  }
+  .footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .footer-brand em { font-style: normal; color: var(--accent); }
+  .footer-info { font-size: 12px; color: var(--text-light); line-height: 1.8; }
+  .footer-links { display: flex; gap: 24px; flex-shrink: 0; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 13px; color: var(--text-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--ink); }
+  .footer-bottom { max-width: 1000px; margin: 0 auto; font-size: 11px; color: var(--text-light); }
+
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="sushiai_redesign_mockup.html" class="nav-logo">Sushi<em>AI</em></a>
+  <div class="nav-links">
+    <a href="sushiai_redesign_mockup.html#philosophy">企業理念</a>
+    <a href="sushiai_redesign_mockup.html#service">事業内容</a>
+    <a href="cases.html" class="active">導入事例</a>
+    <a href="sushiai_redesign_mockup.html#process">導入の流れ</a>
+    <a href="company.html">会社概要</a>
+    <a href="careers.html">採用情報</a>
+    <a href="sushiai_redesign_mockup.html#contact" class="nav-contact">相談する</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-label">Case Studies</div>
+  <h1>AIで、何が変わったのか。</h1>
+  <p>数字だけではわからない、現場の変化をお伝えします。</p>
+</section>
+
+<section class="stats-band fade-in">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">7,300<span class="stat-unit">h</span></div>
+      <div class="stat-label">最大年間削減時間</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3<span class="stat-unit">年</span></div>
+      <div class="stat-label">最長継続支援</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3<span class="stat-unit">か月</span></div>
+      <div class="stat-label">最短本番稼働</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<span class="stat-unit">社+</span></div>
+      <div class="stat-label">大手企業導入実績</div>
+    </div>
+  </div>
+</section>
+
+<!-- R&D高度化型 -->
+<section class="category-section fade-in">
+  <div class="category-label">R&D / Advanced</div>
+  <div class="category-title">R&D高度化型の事例</div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>国内重工業TOP3 / ロボット開発</h3>
+      <h4>「動かないロボット」が、<br>人と対話するようになった</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>論文ベースの事例はあるが、自社内にLLM×ロボット実装知見がない</p>
+        <p>音声・画像認識統合と実機組み込み設計が難しい</p>
+        <p>研究開発で終わらせず実証まで持ち込みたい</p>
+      </div>
+      <p>音声認識・画像認識＋LLMを統合設計。顧客実験場で伴走型R&D（週3日ディスカッション＋開発＋実証）を実施。対話・回避行動を含む高度なロボット制御を実現しました。</p>
+      <div class="ba-row">
+        <div class="ba-item before">
+          <span class="ba-label">Before</span>
+          <span class="ba-val">固定動作のみ</span>
+          プログラム通りの単純作業
+        </div>
+        <div class="ba-item after">
+          <span class="ba-label">After</span>
+          <span class="ba-val">自律対話・回避</span>
+          人と協調して動くAIロボット
+        </div>
+      </div>
+    </div>
+    <div class="case-result case-result-dark">
+      <div class="result-badge">3年連続継続</div>
+      <div class="result-metric">R&D<br>パートナー</div>
+      <div class="result-desc">研究開発から量産検討段階まで一貫支援。プロトタイプから3年連続で開発を継続中。</div>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>競馬メディア / 予測AI</h3>
+      <h4>プロモーションの武器になる<br>予測AIを3か月で構築</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>既存AI予測の精度が低く訴求力が弱い</p>
+        <p>プロモーション施策として十分な話題性・差別化ができていない</p>
+      </div>
+      <p>2名体制で3か月（6人月規模）で構築。予測精度（的中率）を大幅に向上させ、穴馬検出など話題性のある予測コンテンツを実現しました。</p>
+    </div>
+    <div class="case-result">
+      <div class="result-badge">実績</div>
+      <div class="result-metric" style="color: var(--accent);">3<span class="result-unit">か月</span></div>
+      <div class="result-desc">1,000万円以下で構築。2名体制のスピード開発で、短期間でプロダクト品質を実現。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 業務効率化型 -->
+<section class="category-section fade-in" style="background: var(--warm); margin-left: -48px; margin-right: -48px; padding-left: 48px; padding-right: 48px; max-width: none;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+  <div class="category-label">Operations / Efficiency</div>
+  <div class="category-title">業務効率化型の事例</div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>製造業・建設業 / 見積もり業務</h3>
+      <h4>ベテラン頼みの見積もりが、<br>誰でもできるようになった</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>納期確認に時間がかかる</p>
+        <p>人によって回答が違う</p>
+        <p>見積もり・回答根拠の説明が大変</p>
+      </div>
+      <p>過去実績データ数万件をAIに学習させ、最適な見積もり金額と納期を即座に算出。属人的だった「経験と勘」をAIで標準化しました。</p>
+      <div class="ba-row">
+        <div class="ba-item before">
+          <span class="ba-label">Before</span>
+          <span class="ba-val">3日〜1週間</span>
+          ベテランが手作業で算出
+        </div>
+        <div class="ba-item after">
+          <span class="ba-label">After</span>
+          <span class="ba-val">30分</span>
+          AIが即座に最適値を提案
+        </div>
+      </div>
+    </div>
+    <div class="case-result">
+      <div class="result-badge">年間削減効果</div>
+      <div class="result-metric" style="color: var(--accent);">7,300<span class="result-unit">時間</span></div>
+      <div class="result-desc">約3.5人分の工数を削減。即日回答が可能になり、顧客対応スピードも大幅に向上。</div>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>建設・インフラ / 図面業務</h3>
+      <h4>「あの図面どこだっけ？」が、<br>一瞬で見つかるようになった</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>図面を目視で読み取り数量を手入力</p>
+        <p>報告書・説明資料を都度作成</p>
+        <p>手書き図面のデジタル化に数十年規模の工数</p>
+      </div>
+      <p>数万枚の設計図面をAI（vLLM）で構造データ化。手書き図面もOCRで読み取り、AIエージェントによる自然言語検索を実装しました。</p>
+      <div class="ba-row">
+        <div class="ba-item before">
+          <span class="ba-label">Before</span>
+          <span class="ba-val">30分〜半日</span>
+          倉庫・共有フォルダを手探り
+        </div>
+        <div class="ba-item after">
+          <span class="ba-label">After</span>
+          <span class="ba-val">10秒</span>
+          自然言語で即時検索
+        </div>
+      </div>
+    </div>
+    <div class="case-result case-result-dark">
+      <div class="result-badge">年間削減効果</div>
+      <div class="result-metric">2,400<span class="result-unit">時間</span></div>
+      <div class="result-desc">図面検索・照合にかかる時間を大幅圧縮。手書き図面デジタル化の工数も大幅に短縮。</div>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>製造業・建設業 / リスク予測</h3>
+      <h4>経験頼みのリスク予測を、<br>AIが数分で自動作成</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>会社指定リスク予測シート（FMEA）を人が手作業でチェック</p>
+        <p>担当者の経験頼みで、レビューに時間がかかる</p>
+      </div>
+      <p>必要情報を入力するだけで、AIがリスクを自動で洗い出し、評価・対策案を自動生成。さらにFAQチャットボットを統合し、現場で即座に過去対応事例を検索可能にしました。</p>
+    </div>
+    <div class="case-result">
+      <div class="result-badge">年間削減効果</div>
+      <div class="result-metric" style="color: var(--accent);">1,900<span class="result-unit">時間</span></div>
+      <div class="result-desc">FMEA自動作成で約800時間 ＋ FAQチャットボットで約1,100時間。合わせて年間1,900時間の削減を実現。</div>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-content">
+      <h3>動画制作会社 / コンテンツ制作</h3>
+      <h4>YouTube漫画の吹き出し生成を<br>AIで完全自動化</h4>
+      <div class="case-challenge">
+        <div class="case-challenge-label">課題</div>
+        <p>動画制作の手作業工数が膨大</p>
+        <p>制作スピードがボトルネック</p>
+        <p>運用コストが高い</p>
+      </div>
+      <p>AIが台本と流れを見て自動で吹き出しを生成。文字の自動改行挿入まで対応し、制作フローを大幅に効率化しました。</p>
+    </div>
+    <div class="case-result case-result-dark">
+      <div class="result-badge">実績</div>
+      <div class="result-metric">3<span class="result-unit">か月</span></div>
+      <div class="result-desc">1,000万円以下で実装完了。制作のボトルネックを解消し、制作スピードを大幅に向上。</div>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<section class="cta-band fade-in">
+  <div class="cta-box">
+    <h2>御社でもAIで業務改善しませんか？</h2>
+    <p>課題感が漠然としていても構いません。まずはお話を聞かせてください。</p>
+    <a href="mailto:h.kubota@sushiai.jp" class="cta-btn">無料相談を申し込む</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Sushi<em>AI</em></div>
+      <div class="footer-info">
+        Sushi AI株式会社<br>
+        〒105-0001 東京都港区虎ノ門4-31-3 第3和田ビル 603号室<br>
+        設立 2024年11月 ｜ 資本金 4億7,000万円
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="company.html">会社概要</a>
+      <a href="sushiai_redesign_mockup.html#service">サービス</a>
+      <a href="cases.html">導入事例</a>
+      <a href="careers.html">採用情報</a>
+      <a href="sushiai_redesign_mockup.html#contact">お問い合わせ</a>
+      <a href="#">プライバシーポリシー</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 Sushi AI Co., Ltd.</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var fadeEls = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>
+
+</body>
+</html>
