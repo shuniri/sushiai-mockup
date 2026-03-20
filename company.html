@@ -361,6 +361,23 @@
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .nav-links { gap: 12px; }
+    .hero-section { padding: 120px 20px 60px; }
+    .hero-section h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+    .philosophy-band { padding: 48px 20px; }
+    .philosophy-inner { grid-template-columns: 1fr; gap: 28px; }
+    .team-section { padding: 48px 20px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card { flex-direction: column; padding: 24px; }
+    .investors-section { padding: 48px 20px; }
+    .map-section { padding: 40px 20px; }
+    .map-inner { grid-template-columns: 1fr; gap: 24px; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>

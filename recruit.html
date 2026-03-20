@@ -58,7 +58,7 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1758873269276-9518d0cb4a0b?w=1600&q=80') center/cover no-repeat;
+    background: url('https://plus.unsplash.com/premium_photo-1682091109243-3c25af07f13a?w=1600&q=80') center/cover no-repeat;
   }
   .hero-bg::after {
     content: ''; position: absolute; inset: 0;
@@ -93,7 +93,7 @@
   /* ===== TEAM PHOTO BAND ===== */
   .team-band {
     height: 400px;
-    background: url('https://images.unsplash.com/photo-1758873269035-aae0e1fd3422?w=1600&q=80') center 30%/cover no-repeat;
+    background: url('https://plus.unsplash.com/premium_photo-1770220886477-6d590ef49a21?w=1600&q=80') center 30%/cover no-repeat;
     position: relative;
   }
   .team-band::after {
@@ -110,7 +110,7 @@
   .ceo-img {
     width: 300px; height: 380px;
     border-radius: 12px;
-    background: url('https://plus.unsplash.com/premium_photo-1664475017773-c55f05bdb242?w=600&q=80') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1588571907856-a68e5cc3f5b5?w=600&q=80') center/cover no-repeat;
     border: 1px solid var(--border);
   }
   .ceo-role { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 4px; }
@@ -212,6 +212,26 @@
   .st > .fi:nth-child(3) { transition-delay: 0.14s; }
 
   .badge { position: fixed; bottom: 16px; right: 16px; background: var(--bg-s); border: 1px solid var(--border); color: var(--text-3); padding: 6px 14px; font-size: 10px; font-weight: 600; border-radius: 6px; z-index: 999; letter-spacing: 1px; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .nav-r a:not(.nav-cta) { display: none; }
+    .nav-r { gap: 12px; }
+    .hero { min-height: 70vh; }
+    .hero-inner h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+    .team-band { height: 200px; }
+    .ceo { flex-direction: column; gap: 32px; }
+    .ceo-portrait { width: 100%; height: 240px; flex-shrink: 0; }
+    .mvv-grid { grid-template-columns: 1fr; gap: 24px; }
+    .num-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .ppl-grid { grid-template-columns: 1fr; gap: 16px; }
+    .scene { grid-template-columns: 1fr; }
+    .scene-img { height: 200px; }
+    .cul-grid { grid-template-columns: 1fr; gap: 12px; }
+    .pos-card { flex-direction: column; align-items: flex-start; padding: 20px; gap: 12px; }
+    .cta-box { padding: clamp(2rem, 5vw, 3rem); }
+    .sec { padding-left: clamp(1rem, 4vw, 2rem); padding-right: clamp(1rem, 4vw, 2rem); }
+  }
 </style>
 </head>
 <body>
@@ -320,7 +340,7 @@
       <div class="heading fi">SushiAIで働く人たち</div>
       <div class="ppl-grid st">
         <div class="ppl-card fi">
-          <div class="ppl-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664475020409-5716be4bd5a8?w=600&q=80')"></div>
+          <div class="ppl-img" style="background-image: url('https://images.unsplash.com/photo-1524991480436-74348b3085fe?w=600&q=80')"></div>
           <div class="ppl-body">
             <div class="ppl-role">AI Engineer</div>
             <div class="ppl-name">K.T.</div>
@@ -329,7 +349,7 @@
           </div>
         </div>
         <div class="ppl-card fi">
-          <div class="ppl-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1664475910630-6cf9c60a94e9?w=600&q=80')"></div>
+          <div class="ppl-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1682093404112-e98e22cbddbb?w=600&q=80')"></div>
           <div class="ppl-body">
             <div class="ppl-role">AI Consultant</div>
             <div class="ppl-name">S.H.</div>
@@ -338,7 +358,7 @@
           </div>
         </div>
         <div class="ppl-card fi">
-          <div class="ppl-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661432422379-6c6e09e658a9?w=600&q=80')"></div>
+          <div class="ppl-img" style="background-image: url('https://images.unsplash.com/photo-1749813305061-773baf46f346?w=600&q=80')"></div>
           <div class="ppl-body">
             <div class="ppl-role">Sales</div>
             <div class="ppl-name">S.I.</div>
@@ -353,9 +373,9 @@
 
 <!-- SCENE — 写真帯 -->
 <div class="scene">
-  <div class="scene-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661766003490-93a2f1734c73?w=800&q=80')"></div>
-  <div class="scene-img" style="background-image: url('https://images.unsplash.com/photo-1758876203342-fc14c0bba67c?w=800&q=80')"></div>
-  <div class="scene-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661421702501-6c3533337d1a?w=800&q=80')"></div>
+  <div class="scene-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1682091137447-d1d9da843f7b?w=800&q=80')"></div>
+  <div class="scene-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1682093225487-ed4103ec07bf?w=800&q=80')"></div>
+  <div class="scene-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1682094440488-149fa331f76b?w=800&q=80')"></div>
 </div>
 
 <!-- CULTURE -->
