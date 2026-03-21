@@ -153,6 +153,14 @@
   .pos-arrow { font-size: 20px; color: var(--accent); flex-shrink: 0; transition: transform 0.2s; }
   .pos-card:hover .pos-arrow { transform: translateX(6px); }
 
+  /* ===== VISION BAND ===== */
+  .vision-band { padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem); background: linear-gradient(135deg, rgba(200,90,56,0.08) 0%, transparent 60%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .vision-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .vision-item { text-align: center; }
+  .vision-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .vision-text { font-family: 'Noto Serif JP', serif; font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 700; line-height: 1.7; color: var(--text-1); }
+  .vision-sub { font-size: 12px; color: var(--text-3); margin-top: 8px; line-height: 1.6; }
+
   /* ===== CTA ===== */
   .cta-section { padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 7rem); }
   .cta-box { background: var(--accent); border-radius: 20px; padding: clamp(3rem, 6vw, 5rem); text-align: center; position: relative; overflow: hidden; }
@@ -198,6 +206,8 @@
     .ppl-grid { grid-template-columns: 1fr; }
     .cul-grid { grid-template-columns: 1fr; }
     .pos-card { flex-direction: column; align-items: flex-start; padding: 20px; gap: 12px; }
+    .vision-inner { grid-template-columns: 1fr; gap: 32px; }
+    .vision-item { text-align: left; padding-left: 16px; border-left: 2px solid var(--accent); }
     .cta-box { padding: clamp(2rem, 5vw, 3rem); }
     .con { padding: 0 clamp(1rem, 4vw, 2rem); }
   }
@@ -231,6 +241,25 @@
     </div>
   </div>
   <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ===== VISION BAND ===== -->
+<section class="vision-band">
+  <div class="vision-inner">
+    <div class="vision-item fi">
+      <div class="vision-tag">Purpose</div>
+      <div class="vision-text">我が国のAI産業の発展に貢献し、<br>デジタル赤字を防ぐ</div>
+    </div>
+    <div class="vision-item fi">
+      <div class="vision-tag">Mission</div>
+      <div class="vision-text">自国の未来に希望を創る</div>
+    </div>
+    <div class="vision-item fi">
+      <div class="vision-tag">Vision</div>
+      <div class="vision-text">日本から世界に誇れる<br>AIサービスを輩出し続ける</div>
+      <div class="vision-sub">優秀AI人材特化のインキュベーション<br>エコシステムを構築する</div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== WHY NOW ===== -->
