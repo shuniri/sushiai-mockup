@@ -145,8 +145,8 @@
   .pos-list { margin-top: 48px; }
   .pos-card { display: flex; justify-content: space-between; align-items: center; padding: 28px 32px; background: var(--bg-s); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 12px; transition: all 0.3s ease; gap: 24px; }
   .pos-card:hover { border-color: var(--accent); transform: translateX(4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-  .pos-tags { display: flex; gap: 6px; margin-bottom: 6px; }
-  .pos-tag { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px; background: var(--accent-s); color: var(--accent); }
+  .pos-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+  .pos-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px; background: var(--accent-s); color: var(--accent); line-height: 1.4; }
   .pos-tag.sub { background: rgba(255,255,255,0.06); color: var(--text-3); }
   .pos-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
   .pos-desc { font-size: 13px; color: var(--text-2); line-height: 1.7; }
@@ -271,14 +271,13 @@
   <div class="con">
     <div class="deco" style="top:30px; left:-30px">Projects</div>
     <div class="label fi">What You'll Work On</div>
-    <div class="heading fi">あなたが関わるプロジェクト</div>
-    <p class="sub fi">入社したら何をするのか。「AIコンサルティング」の中身を具体的にお見せします。</p>
+    <div class="heading fi">こんなプロジェクトに関われるかも</div>
+    <p class="sub fi">SushiAIが手がける領域のイメージ。AIコンサルティングの現場では、こうした案件が生まれています。</p>
 
     <div class="impact-grid st">
       <div class="impact-card fi">
-        <div class="impact-badge live">稼働中</div>
-        <h3>大手重工業 × 知能化ロボット</h3>
-        <p>国内最大手の重工業メーカーと、LLMを活用した自律対話ロボットを共同開発。音声認識・画像認識を統合し、人と協調して動くAIを実機で実現。</p>
+        <h3>重工業 × 知能化ロボット</h3>
+        <p>大手メーカーと、LLMを活用した自律対話ロボットを共同開発。音声認識・画像認識を統合し、人と協調して動くAIを実機で実現するような案件。</p>
         <div class="impact-tags">
           <span class="impact-tag">LLM</span>
           <span class="impact-tag">音声認識</span>
@@ -287,9 +286,8 @@
         </div>
       </div>
       <div class="impact-card fi">
-        <div class="impact-badge live">稼働中</div>
         <h3>製造業 × AI見積もりシステム</h3>
-        <p>過去数万件の実績データからAIが最適な見積もり・納期を即座に算出。「3日かかっていた見積もりが30分」に。年間7,300時間を削減。</p>
+        <p>過去数万件の実績データからAIが最適な見積もり・納期を算出。「3日かかっていた見積もりが30分」になるような業務改革を支援する案件。</p>
         <div class="impact-tags">
           <span class="impact-tag">機械学習</span>
           <span class="impact-tag">データ分析</span>
@@ -297,9 +295,8 @@
         </div>
       </div>
       <div class="impact-card fi">
-        <div class="impact-badge live">稼働中</div>
         <h3>建設 × AI図面検索エンジン</h3>
-        <p>数万枚の設計図面をAIで構造データ化。手書き図面もOCRで読み取り、自然言語で「あの図面」を一瞬で検索。年間2,400時間を削減。</p>
+        <p>数万枚の設計図面をAIで構造データ化。手書き図面もOCRで読み取り、自然言語で一瞬で検索できるシステムを構築するような案件。</p>
         <div class="impact-tags">
           <span class="impact-tag">OCR</span>
           <span class="impact-tag">NLP</span>
@@ -307,7 +304,6 @@
         </div>
       </div>
       <div class="impact-card fi">
-        <div class="impact-badge new">新規案件</div>
         <h3>自社SaaS × AIプロダクト開発</h3>
         <p>コンサルで見えた「業界共通の課題」を自社プロダクトとして開発。0→1のプロダクト立ち上げに関われるチャンス。</p>
         <div class="impact-tags">
@@ -420,27 +416,23 @@
 
     <div class="cul-grid st">
       <div class="cul-card fi">
-        <div class="cul-emoji">🏭</div>
         <h3>現場主義 — デスクでAIは作れない</h3>
         <p>顧客の工場、オフィス、倉庫に入り込む。「使う人の隣」で設計するから、現場で本当に動くAIが作れる。</p>
         <span class="hl">エンジニアも顧客先に行く</span>
       </div>
       <div class="cul-card fi">
-        <div class="cul-emoji">🔀</div>
         <h3>全員越境 — 肩書きの壁がない</h3>
         <p>エンジニアが提案書を書き、コンサルがコードを書く。「それは自分の仕事じゃない」がない。だから速い。</p>
         <span class="hl">職種横断のプロジェクト体制</span>
       </div>
       <div class="cul-card fi">
-        <div class="cul-emoji">📈</div>
         <h3>ストックオプション — 成長を自分ごとに</h3>
         <p>成果に応じたSO付与あり。上場を目指す過程を、当事者として経験できる。</p>
         <span class="hl">全ポジション対象</span>
       </div>
       <div class="cul-card fi">
-        <div class="cul-emoji">🕐</div>
         <h3>裁量と柔軟性</h3>
-        <p>フレックスタイム（コア10:00-15:00）。ポジションに応じてリモートワーク対応。成果で評価する。</p>
+        <p>フレックスタイム制。ポジションに応じてリモートワーク対応。成果で評価する。</p>
         <span class="hl">フルリモート・ハイブリッド選択可</span>
       </div>
     </div>
