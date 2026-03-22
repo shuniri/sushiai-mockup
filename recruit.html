@@ -38,8 +38,15 @@
 
   /* NAV */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8,8,8,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem, 3vw, 3rem); }
-  .nav-logo { font-family: 'Inter'; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .nav-logo { font-family: 'Inter'; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #fff; }
   .nav-logo em { font-style: normal; color: var(--accent); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,8,8,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 24px; z-index: 99; }
+  .mobile-menu a { display: block; padding: 12px 0; color: var(--text-2); font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: #fff; }
+  .mobile-menu.open { display: block; }
   .nav-r { display: flex; gap: 24px; align-items: center; }
   .nav-r a { color: var(--text-3); font-size: 13px; font-weight: 500; transition: color 0.2s; }
   .nav-r a:hover { color: var(--text); }
@@ -193,8 +200,8 @@
 
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
-    .nav-r a:not(.nav-cta) { display: none; }
-    .nav-r { gap: 12px; }
+    .nav-r { display: none; }
+    .hamburger { display: block; }
     .hero { min-height: 80vh; padding: 100px 20px 48px; }
     .hero h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
     .hero-scroll { display: none; }
@@ -228,7 +235,19 @@
     <a href="recruit.html" class="active">採用情報</a>
     <a href="#contact" class="nav-cta">相談する</a>
   </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu">
+  <a href="sushiai_redesign_mockup.html">トップページ</a>
+  <a href="sushiai_redesign_mockup.html#service">事業内容</a>
+  <a href="cases.html">導入事例</a>
+  <a href="flow.html">導入の流れ</a>
+  <a href="company.html">会社概要</a>
+  <a href="recruit.html">採用情報</a>
+  <a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('open')">相談する</a>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">

@@ -65,6 +65,13 @@
     transition: background 0.2s !important;
   }
   .nav-contact:hover { background: var(--accent) !important; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 16px 24px; z-index: 99; }
+  .mobile-menu a { display: block; padding: 12px 0; color: var(--text-mid); font-size: 14px; font-weight: 500; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--ink); }
+  .mobile-menu.open { display: block; }
 
   .page-hero {
     padding: 140px 48px 40px;
@@ -317,8 +324,8 @@
 
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
-    .nav-links a:not(.nav-cta) { display: none; }
-    .nav-links { gap: 12px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .stats-band { padding: 40px 24px; }
     .category-section { padding: 48px 20px; }
@@ -341,7 +348,19 @@
     <a href="recruit.html">採用情報</a>
     <a href="sushiai_redesign_mockup.html#contact" class="nav-contact">相談する</a>
   </div>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu">
+  <a href="sushiai_redesign_mockup.html">トップページ</a>
+  <a href="sushiai_redesign_mockup.html#service">事業内容</a>
+  <a href="cases.html">導入事例</a>
+  <a href="flow.html">導入の流れ</a>
+  <a href="company.html">会社概要</a>
+  <a href="recruit.html">採用情報</a>
+  <a href="sushiai_redesign_mockup.html#contact">相談する</a>
+</div>
 
 <section class="page-hero">
   <div class="page-hero-label">Case Studies</div>
