@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>導入の流れ | Sushi AI株式会社</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --ink: #1C1C1E;
+    --ink-soft: #2C2C2E;
+    --warm: #F7F5F0;
+    --cream: #EFECE4;
+    --accent: #C85A38;
+    --accent-hover: #A8482D;
+    --text: #3A3A3C;
+    --text-mid: #636366;
+    --text-light: #8E8E93;
+    --border: #D1D1D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    padding: 0 48px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+  .nav-logo em { font-style: normal; color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-mid); font-size: 13px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); font-weight: 700; }
+  .nav-contact {
+    background: var(--ink) !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-contact:hover { background: var(--accent) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 140px 48px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .page-hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .page-hero p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* SERVICE TABS */
+  .service-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+  .service-tab-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    border-bottom: 2px solid var(--border);
+  }
+  .service-tab {
+    padding: 16px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+  .service-tab:hover { color: var(--ink); }
+  .service-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .service-panel { display: none; }
+  .service-panel.active { display: block; }
+
+  /* INTRO */
+  .service-intro {
+    background: var(--warm);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+  .service-intro h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .service-intro p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* FLOW STEPS */
+  .flow-timeline {
+    position: relative;
+    padding-left: 48px;
+  }
+  .flow-timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+  .flow-step {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .flow-step:last-child { margin-bottom: 0; }
+  .flow-step-dot {
+    position: absolute;
+    left: -48px;
+    top: 4px;
+    width: 38px;
+    height: 38px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .flow-step h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .flow-step p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+  .flow-step-detail {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: var(--warm);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .flow-step-period {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(200,90,56,0.08);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: var(--ink);
+    color: #fff;
+    padding: 80px 48px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .cta-band h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .cta-band p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .btn-cta:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 48px 24px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+  .footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .footer-brand em { font-style: normal; color: var(--accent); }
+  .footer-info { font-size: 12px; color: var(--text-light); line-height: 1.8; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: var(--text-light); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-bottom { font-size: 11px; color: var(--text-light); }
+
+  /* FADE-IN */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .nav { padding: 0 20px; }
+    .nav-links a:not(.nav-contact) { display: none; }
+    .nav-links { gap: 12px; }
+    .page-hero { padding: 120px 20px 40px; }
+    .page-hero h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+    .service-section { padding: 0 20px 60px; }
+    .service-tab-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .service-tab { padding: 12px 20px; font-size: 13px; white-space: nowrap; }
+    .service-intro { padding: 24px; }
+    .flow-timeline { padding-left: 40px; }
+    .flow-timeline::before { left: 14px; }
+    .flow-step-dot { left: -40px; width: 30px; height: 30px; font-size: 12px; }
+    .cta-band { padding: 48px 20px; }
+    .cta-band h2 { font-size: 22px; }
+    .footer { padding: 32px 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="sushiai_redesign_mockup.html" class="nav-logo">Sushi<em>AI</em></a>
+  <div class="nav-links">
+    <a href="sushiai_redesign_mockup.html#service">事業内容</a>
+    <a href="cases.html">導入事例</a>
+    <a href="flow.html" class="active">導入の流れ</a>
+    <a href="company.html">会社概要</a>
+    <a href="recruit.html">採用情報</a>
+    <a href="sushiai_redesign_mockup.html#contact" class="nav-contact">相談する</a>
+  </div>
+</nav>
+
+<section class="page-hero fade-in">
+  <div class="page-hero-label">Service Flow</div>
+  <h1>導入の流れ</h1>
+  <p>SushiAIでは、AI受託開発とインキュベーション支援の2つのサービスを提供しています。<br>課題のヒアリングからPoC、本番運用まで、一気通貫でサポートします。</p>
+</section>
+
+<section class="service-section">
+  <!-- TAB BAR -->
+  <div class="service-tab-bar">
+    <div class="service-tab active" onclick="switchTab('dev')">AI受託開発</div>
+    <div class="service-tab" onclick="switchTab('incubation')">インキュベーション支援</div>
+  </div>
+
+  <!-- ===== AI受託開発 ===== -->
+  <div class="service-panel active" id="panel-dev">
+    <div class="service-intro fade-in">
+      <h2>AI受託開発</h2>
+      <p>お客様の業務課題に対し、最適なAIソリューションを設計・開発・導入します。<br>「AIで何ができるか」の検討段階から、本番環境での運用定着まで伴走します。</p>
+    </div>
+
+    <div class="flow-timeline">
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">1</div>
+        <h3>無料相談・課題ヒアリング</h3>
+        <p>現場の課題や業務フローをヒアリングし、AIで解決可能な領域を特定します。「AIで何ができるのか分からない」という段階からでもご相談いただけます。</p>
+        <div class="flow-step-detail">
+          ・経営課題・業務課題の棚卸し<br>
+          ・AI適用可能性の簡易診断<br>
+          ・類似事例のご紹介
+        </div>
+        <div class="flow-step-period">目安：1〜2週間</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">2</div>
+        <h3>要件定義・AI企画設計</h3>
+        <p>ヒアリング結果をもとに、AIの活用方針・技術選定・ROI試算をまとめた企画書を作成します。</p>
+        <div class="flow-step-detail">
+          ・業務フロー分析とAI導入ポイントの設計<br>
+          ・技術選定（LLM / 画像認識 / 機械学習 等）<br>
+          ・投資対効果の試算・KPI設定<br>
+          ・開発スコープと見積り提示
+        </div>
+        <div class="flow-step-period">目安：2〜4週間</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">3</div>
+        <h3>PoC（概念実証）</h3>
+        <p>実データを用いた小規模検証で、AIの精度・効果を実証します。本番開発に進む前にリスクを最小化します。</p>
+        <div class="flow-step-detail">
+          ・実データでのモデル検証<br>
+          ・精度評価レポートの作成<br>
+          ・現場担当者へのデモ・フィードバック収集<br>
+          ・Go/No-Go判定
+        </div>
+        <div class="flow-step-period">目安：1〜2ヶ月</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">4</div>
+        <h3>本番開発・システム構築</h3>
+        <p>PoCで検証した成果をもとに、本番環境で運用できるシステムを構築します。既存業務システムとの連携も対応可能です。</p>
+        <div class="flow-step-detail">
+          ・AIモデルの本番チューニング<br>
+          ・API / Webアプリ / 業務システム連携の開発<br>
+          ・セキュリティ・インフラ設計<br>
+          ・段階的リリース
+        </div>
+        <div class="flow-step-period">目安：2〜4ヶ月</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">5</div>
+        <h3>運用・改善サポート</h3>
+        <p>リリース後も精度モニタリングやモデル再学習など、継続的な改善を支援します。</p>
+        <div class="flow-step-detail">
+          ・運用監視・精度モニタリング<br>
+          ・モデル再学習・パラメータ調整<br>
+          ・利用者フィードバックの反映<br>
+          ・新機能の追加開発
+        </div>
+        <div class="flow-step-period">継続サポート</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== インキュベーション支援 ===== -->
+  <div class="service-panel" id="panel-incubation">
+    <div class="service-intro fade-in">
+      <h2>インキュベーション支援</h2>
+      <p>AI人材・AIスタートアップの成長を支援するプログラムです。<br>コンサルティングで得た業界知見を活かし、プロダクト開発から事業化まで伴走します。</p>
+    </div>
+
+    <div class="flow-timeline">
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">1</div>
+        <h3>エントリー・審査</h3>
+        <p>AIプロダクトのアイデアや技術シーズをお持ちの方からエントリーを受付。事業性・技術力・チーム構成をもとに審査します。</p>
+        <div class="flow-step-detail">
+          ・事業計画書の提出<br>
+          ・技術デモ or プロトタイプの共有<br>
+          ・面談によるチーム・ビジョン確認
+        </div>
+        <div class="flow-step-period">目安：2〜3週間</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">2</div>
+        <h3>事業設計・プロダクト戦略</h3>
+        <p>SushiAIのコンサルティング知見を活用し、ターゲット市場の選定からプロダクト戦略、マネタイズモデルを設計します。</p>
+        <div class="flow-step-detail">
+          ・市場調査・競合分析<br>
+          ・ターゲット顧客の特定<br>
+          ・プロダクトロードマップの策定<br>
+          ・収益モデルの設計
+        </div>
+        <div class="flow-step-period">目安：1〜2ヶ月</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">3</div>
+        <h3>MVP開発・市場検証</h3>
+        <p>最小限のプロダクト（MVP）を迅速に開発し、実際のユーザーからフィードバックを収集します。</p>
+        <div class="flow-step-detail">
+          ・MVP設計・開発支援<br>
+          ・β版ユーザーの獲得サポート<br>
+          ・ユーザーインタビュー・データ分析<br>
+          ・ピボット判断の支援
+        </div>
+        <div class="flow-step-period">目安：2〜3ヶ月</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">4</div>
+        <h3>グロース・資金調達支援</h3>
+        <p>プロダクトの成長フェーズに合わせて、マーケティング戦略や資金調達をサポートします。</p>
+        <div class="flow-step-detail">
+          ・GTM戦略の策定<br>
+          ・投資家ネットワークの紹介<br>
+          ・ピッチ資料の作成支援<br>
+          ・事業KPIの設計・モニタリング
+        </div>
+        <div class="flow-step-period">目安：3〜6ヶ月</div>
+      </div>
+
+      <div class="flow-step fade-in">
+        <div class="flow-step-dot">5</div>
+        <h3>事業自走・エコシステム連携</h3>
+        <p>自走可能な体制の構築を支援し、SushiAIのパートナーネットワークとの連携で継続的な成長を後押しします。</p>
+        <div class="flow-step-detail">
+          ・組織・採用戦略の設計<br>
+          ・パートナー企業との連携機会の提供<br>
+          ・継続的なアドバイザリーサポート
+        </div>
+        <div class="flow-step-period">継続支援</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>「AIで何ができるか分からない」という段階でも構いません。<br>課題の整理から一緒に考えます。</p>
+  <a href="mailto:h.kubota@sushiai.jp" class="btn-cta">無料相談を申し込む</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Sushi<em>AI</em></div>
+      <div class="footer-info">Sushi AI株式会社<br>〒105-0004 東京都港区新橋4丁目31番3号 第三名和ビル<br>設立 2024年11月 ｜ 資本金 4億7,000万円</div>
+    </div>
+    <div class="footer-links">
+      <a href="company.html">会社概要</a>
+      <a href="sushiai_redesign_mockup.html#service">サービス</a>
+      <a href="cases.html">導入事例</a>
+      <a href="recruit.html">採用情報</a>
+      <a href="sushiai_redesign_mockup.html#contact">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Sushi AI Co., Ltd.</div>
+</footer>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
+  if (tab === 'dev') {
+    document.querySelectorAll('.service-tab')[0].classList.add('active');
+    document.getElementById('panel-dev').classList.add('active');
+  } else {
+    document.querySelectorAll('.service-tab')[1].classList.add('active');
+    document.getElementById('panel-incubation').classList.add('active');
+  }
+  // Re-trigger fade-in for newly visible panel
+  document.querySelectorAll('.service-panel.active .fade-in').forEach(el => {
+    el.classList.remove('visible');
+    setTimeout(() => observer.observe(el), 50);
+  });
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
